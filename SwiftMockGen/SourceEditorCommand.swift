@@ -7,6 +7,7 @@
 
 import Foundation
 import XcodeKit
+import Generator
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
