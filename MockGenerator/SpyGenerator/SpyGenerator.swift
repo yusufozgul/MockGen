@@ -14,8 +14,8 @@ import SwiftSyntaxParser
 import XcodeKit
 
 public class SpyGenerator {
-    private let buffer: XCSourceTextBuffer
-    public init(buffer: XCSourceTextBuffer) { self.buffer = buffer }
+    private let buffer: XcodeProtocol
+    public init(buffer: XcodeProtocol) { self.buffer = buffer }
 
     public func generate(source: String) throws -> String {
         var spyClasss = Mock()

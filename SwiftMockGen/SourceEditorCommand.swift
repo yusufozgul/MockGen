@@ -7,7 +7,7 @@
 
 import Foundation
 import XcodeKit
-import Generator
+import MockGenerator
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
