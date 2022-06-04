@@ -12,14 +12,11 @@
 		5512C507284BE08D009A1D96 /* MockGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5543AC10284BDDFB004E44E7 /* MockGenerator.framework */; };
 		5512C508284BE08D009A1D96 /* MockGenerator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5543AC10284BDDFB004E44E7 /* MockGenerator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5512C50C284BE0CD009A1D96 /* XcodeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512C50B284BE0CD009A1D96 /* XcodeProtocol.swift */; };
-		5512C50E284BE10A009A1D96 /* XCSourceTextBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512C50D284BE10A009A1D96 /* XCSourceTextBuffer+Extension.swift */; };
 		5512C510284BE12D009A1D96 /* MockXcodeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512C50F284BE12D009A1D96 /* MockXcodeProtocol.swift */; };
 		5543AC18284BDDFC004E44E7 /* MockGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5543AC10284BDDFB004E44E7 /* MockGenerator.framework */; };
 		5543AC1F284BDDFC004E44E7 /* MockGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5543AC1E284BDDFC004E44E7 /* MockGeneratorTests.swift */; };
 		5543AC2B284BDE19004E44E7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554C65DE284297C4008864D8 /* Cocoa.framework */; };
 		5543AC2C284BDE26004E44E7 /* lib_InternalSwiftSyntaxParser.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 550E7B6C28469D3C00360435 /* lib_InternalSwiftSyntaxParser.dylib */; };
-		5543AC2E284BDE3A004E44E7 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5543ABC2284BD9B0004E44E7 /* XcodeKit.framework */; };
-		5543AC2F284BDE3A004E44E7 /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5543ABC2284BD9B0004E44E7 /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5543AC31284BDE52004E44E7 /* DefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFD7B32847F4EA005E5BC0 /* DefaultValues.swift */; };
 		5543AC32284BDE56004E44E7 /* GenError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55752CAB284377E4006818D9 /* GenError.swift */; };
 		5543AC33284BDE56004E44E7 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55752CAF28437836006818D9 /* Mock.swift */; };
@@ -29,6 +26,11 @@
 		554C65CC284297AC008864D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C65CB284297AC008864D8 /* ContentView.swift */; };
 		554C65CE284297AF008864D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554C65CD284297AF008864D8 /* Assets.xcassets */; };
 		554C65D1284297AF008864D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554C65D0284297AF008864D8 /* Preview Assets.xcassets */; };
+		55BA421D284BEEF800ACE17B /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554C65E0284297C4008864D8 /* XcodeKit.framework */; };
+		55BA421E284BEEF800ACE17B /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 554C65E0284297C4008864D8 /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55BA4220284BEF1500ACE17B /* XCSourceTextBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512C50D284BE10A009A1D96 /* XCSourceTextBuffer+Extension.swift */; };
+		55BA4221284BF95D00ACE17B /* lib_InternalSwiftSyntaxParser.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 550E7B6C28469D3C00360435 /* lib_InternalSwiftSyntaxParser.dylib */; };
+		55BA4222284BF96500ACE17B /* lib_InternalSwiftSyntaxParser.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 550E7B6C28469D3C00360435 /* lib_InternalSwiftSyntaxParser.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		55E052B22846A4E20028AE0D /* BreathAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E052B12846A4E20028AE0D /* BreathAnimation.swift */; };
 		55F187A12846956E009A22B3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554C65DE284297C4008864D8 /* Cocoa.framework */; };
 		55F187A52846956E009A22B3 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F187A42846956E009A22B3 /* SourceEditorExtension.swift */; };
@@ -75,17 +77,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				5512C508284BE08D009A1D96 /* MockGenerator.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5543AC30284BDE3A004E44E7 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				5543AC2F284BDE3A004E44E7 /* XcodeKit.framework in Embed Frameworks */,
+				55BA4222284BF96500ACE17B /* lib_InternalSwiftSyntaxParser.dylib in Embed Frameworks */,
+				55BA421E284BEEF800ACE17B /* XcodeKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,7 +101,6 @@
 		5512C50B284BE0CD009A1D96 /* XcodeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeProtocol.swift; sourceTree = "<group>"; };
 		5512C50D284BE10A009A1D96 /* XCSourceTextBuffer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCSourceTextBuffer+Extension.swift"; sourceTree = "<group>"; };
 		5512C50F284BE12D009A1D96 /* MockXcodeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockXcodeProtocol.swift; sourceTree = "<group>"; };
-		5543ABC2284BD9B0004E44E7 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XcodeKit.framework; sourceTree = "<group>"; };
 		5543AC10284BDDFB004E44E7 /* MockGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MockGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5543AC17284BDDFC004E44E7 /* MockGeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MockGeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5543AC1E284BDDFC004E44E7 /* MockGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGeneratorTests.swift; sourceTree = "<group>"; };
@@ -139,7 +131,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5543AC2E284BDE3A004E44E7 /* XcodeKit.framework in Frameworks */,
 				5512C504284BE078009A1D96 /* SwiftFormat in Frameworks */,
 				5543AC2B284BDE19004E44E7 /* Cocoa.framework in Frameworks */,
 				5543AC2C284BDE26004E44E7 /* lib_InternalSwiftSyntaxParser.dylib in Frameworks */,
@@ -166,6 +157,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55BA421D284BEEF800ACE17B /* XcodeKit.framework in Frameworks */,
+				55BA4221284BF95D00ACE17B /* lib_InternalSwiftSyntaxParser.dylib in Frameworks */,
 				5512C507284BE08D009A1D96 /* MockGenerator.framework in Frameworks */,
 				55F187A12846956E009A22B3 /* Cocoa.framework in Frameworks */,
 			);
@@ -178,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				550E7B6C28469D3C00360435 /* lib_InternalSwiftSyntaxParser.dylib */,
-				5543ABC2284BD9B0004E44E7 /* XcodeKit.framework */,
 				55F79ED12843BBC800EE7942 /* Helpers */,
 				55F79ED02843BBBB00EE7942 /* Core */,
 				55F79ECF2843BB9100EE7942 /* SpyGenerator */,
@@ -254,6 +246,13 @@
 			isa = PBXGroup;
 			children = (
 				55752CB42843A375006818D9 /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		55BA421F284BEF0400ACE17B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
 				5512C50D284BE10A009A1D96 /* XCSourceTextBuffer+Extension.swift */,
 			);
 			path = Extensions;
@@ -262,6 +261,7 @@
 		55F187A32846956E009A22B3 /* SwiftMockGen */ = {
 			isa = PBXGroup;
 			children = (
+				55BA421F284BEF0400ACE17B /* Extensions */,
 				55F187A42846956E009A22B3 /* SourceEditorExtension.swift */,
 				55F187A62846956E009A22B3 /* SourceEditorCommand.swift */,
 				55F187A82846956E009A22B3 /* Info.plist */,
@@ -317,7 +317,6 @@
 				5543AC0C284BDDFB004E44E7 /* Sources */,
 				5543AC0D284BDDFB004E44E7 /* Frameworks */,
 				5543AC0E284BDDFB004E44E7 /* Resources */,
-				5543AC30284BDE3A004E44E7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -482,7 +481,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5543AC34284BDE5A004E44E7 /* SpyGenerator.swift in Sources */,
-				5512C50E284BE10A009A1D96 /* XCSourceTextBuffer+Extension.swift in Sources */,
 				5512C50C284BE0CD009A1D96 /* XcodeProtocol.swift in Sources */,
 				5543AC31284BDE52004E44E7 /* DefaultValues.swift in Sources */,
 				5543AC32284BDE56004E44E7 /* GenError.swift in Sources */,
@@ -516,6 +514,7 @@
 			files = (
 				55F187A52846956E009A22B3 /* SourceEditorExtension.swift in Sources */,
 				55F187A72846956E009A22B3 /* SourceEditorCommand.swift in Sources */,
+				55BA4220284BEF1500ACE17B /* XCSourceTextBuffer+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,7 +549,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = E7R55236BC;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -572,7 +571,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MockGenerator",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusufozgul.MockGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -588,7 +587,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = E7R55236BC;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -610,7 +609,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MockGenerator",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusufozgul.MockGenerator;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -777,7 +776,7 @@
 				CODE_SIGN_ENTITLEMENTS = MockGen/MockGen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MockGen/Preview Content\"";
 				DEVELOPMENT_TEAM = E7R55236BC;
 				ENABLE_PREVIEWS = YES;
@@ -789,7 +788,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusufozgul.MockGen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -806,7 +805,7 @@
 				CODE_SIGN_ENTITLEMENTS = MockGen/MockGen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MockGen/Preview Content\"";
 				DEVELOPMENT_TEAM = E7R55236BC;
 				ENABLE_PREVIEWS = YES;
@@ -818,7 +817,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusufozgul.MockGen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -832,7 +831,7 @@
 				CODE_SIGN_ENTITLEMENTS = SwiftMockGen/SwiftMockGen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = E7R55236BC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -847,8 +846,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MockGenerator",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusufozgul.MockGen.SwiftMockGen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -863,7 +863,7 @@
 				CODE_SIGN_ENTITLEMENTS = SwiftMockGen/SwiftMockGen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = E7R55236BC;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -878,8 +878,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MockGenerator",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusufozgul.MockGen.SwiftMockGen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

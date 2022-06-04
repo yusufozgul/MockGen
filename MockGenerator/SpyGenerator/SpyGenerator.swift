@@ -11,7 +11,6 @@ import SwiftFormatConfiguration
 import SwiftSemantics
 import SwiftSyntax
 import SwiftSyntaxParser
-import XcodeKit
 
 public class SpyGenerator {
     private let buffer: XcodeProtocol
