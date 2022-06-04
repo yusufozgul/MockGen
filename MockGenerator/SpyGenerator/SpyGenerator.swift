@@ -51,7 +51,7 @@ public class SpyGenerator {
                 .addToNewLine("var invoked\(variable.name.firstUppercased)GetterCount = 0")
                 .addToNewLine("var stubbed\(variable.name.firstUppercased): \(variable.typeAnnotation ?? "")!")
 
-            if let defaultValue = DefaultValues(rawValue: variable.typeAnnotation ?? "") {
+            if let defaultValue = DefaultValues(rawValue: variable.typeAnnotation ?? "")?.defaultValue {
                 spyClasss.add(" = \(defaultValue)")
             }
 
