@@ -26,6 +26,7 @@
 		554C65CC284297AC008864D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C65CB284297AC008864D8 /* ContentView.swift */; };
 		554C65CE284297AF008864D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554C65CD284297AF008864D8 /* Assets.xcassets */; };
 		554C65D1284297AF008864D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 554C65D0284297AF008864D8 /* Preview Assets.xcassets */; };
+		55A3DCE428578635006E76F3 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A3DCE328578635006E76F3 /* Array+Extensions.swift */; };
 		55BA421D284BEEF800ACE17B /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554C65E0284297C4008864D8 /* XcodeKit.framework */; };
 		55BA421E284BEEF800ACE17B /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 554C65E0284297C4008864D8 /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55BA4220284BEF1500ACE17B /* XCSourceTextBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512C50D284BE10A009A1D96 /* XCSourceTextBuffer+Extension.swift */; };
@@ -117,6 +118,7 @@
 		55752CAF28437836006818D9 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		55752CB42843A375006818D9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		5576D00F28436D1C00701E70 /* SpyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyGenerator.swift; sourceTree = "<group>"; };
+		55A3DCE328578635006E76F3 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		55DFD7B32847F4EA005E5BC0 /* DefaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultValues.swift; sourceTree = "<group>"; };
 		55E052B12846A4E20028AE0D /* BreathAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathAnimation.swift; sourceTree = "<group>"; };
 		55F187A02846956E009A22B3 /* SwiftMockGen.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SwiftMockGen.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				55752CB42843A375006818D9 /* String+Extension.swift */,
+				55A3DCE328578635006E76F3 /* Array+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				5543AC34284BDE5A004E44E7 /* SpyGenerator.swift in Sources */,
 				5512C50C284BE0CD009A1D96 /* XcodeProtocol.swift in Sources */,
 				5543AC31284BDE52004E44E7 /* DefaultValues.swift in Sources */,
+				55A3DCE428578635006E76F3 /* Array+Extensions.swift in Sources */,
 				5543AC32284BDE56004E44E7 /* GenError.swift in Sources */,
 				5543AC35284BDE5D004E44E7 /* String+Extension.swift in Sources */,
 				5543AC33284BDE56004E44E7 /* Mock.swift in Sources */,

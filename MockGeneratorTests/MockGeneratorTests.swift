@@ -326,4 +326,160 @@ class TestClass: TestProtocol {
 
         XCTAssertEqual(try spyGenerator.generate(source: file), mock)
     }
+
+    func test_generate_StaticVariable_ReturnMock() throws {
+        let file = """
+class TestClass: TestProtocol {
+    static var testString: String
+}
+"""
+
+        let mock = """
+class TestClass: TestProtocol {
+    var invokedTestStringSetter = false
+    var invokedTestStringSetterCount = 0
+    var invokedTestString: String?
+    var invokedTestStringList: [String] = []
+    var invokedTestStringGetter = false
+    var invokedTestStringGetterCount = 0
+    var stubbedTestString: String! = ""
+    static var testString: String {
+        set {
+            invokedTestStringSetter = true
+            invokedTestStringSetterCount += 1
+            invokedTestString = newValue
+            invokedTestStringList.append(newValue)
+        }
+        get {
+            invokedTestStringGetter = true
+            invokedTestStringGetterCount += 1
+            return stubbedTestString
+        }
+    }
+
+}
+
+"""
+
+        XCTAssertEqual(try spyGenerator.generate(source: file), mock)
+    }
+
+    func test_generate_ParameterLabels_ReturnMock() throws {
+        let file = """
+class TestClass: TestProtocol {
+    func setValue(from data: NSObject) {
+        <#code#>
+    }
+
+    func setDate(_ date: Date) {
+        <#code#>
+    }
+}
+"""
+
+        let mock = """
+class TestClass: TestProtocol {
+    var invokedSetValue = false
+    var invokedSetValueCount = 0
+    var invokedSetValueParameters: (data: NSObject, Void)?
+    var invokedSetValueParametersList: [(data: NSObject, Void)] = []
+    func setValue(from data: NSObject) {
+        invokedSetValue = true
+        invokedSetValueCount += 1
+        invokedSetValueParameters = (data, ())
+        invokedSetValueParametersList.append((data, ()))
+    }
+
+    var invokedSetDate = false
+    var invokedSetDateCount = 0
+    var invokedSetDateParameters: (date: Date, Void)?
+    var invokedSetDateParametersList: [(date: Date, Void)] = []
+    func setDate(_ date: Date) {
+        invokedSetDate = true
+        invokedSetDateCount += 1
+        invokedSetDateParameters = (date, ())
+        invokedSetDateParametersList.append((date, ()))
+    }
+
+}
+
+"""
+
+        XCTAssertEqual(try spyGenerator.generate(source: file), mock)
+    }
+
+    func test_generate_MethodOverloading_ReturnMock() throws {
+        let file = """
+class TestClass: TestProtocol {
+    func setValue(intValue: Int) {
+        <#code#>
+    }
+
+    func setValue(stringValue: String) {
+        <#code#>
+    }
+
+    func setValue(boolValue: Bool) {
+        <#code#>
+    }
+
+    func setValue(boolValue: Bool, defaultFalse: Bool) {
+        <#code#>
+    }
+}
+"""
+
+        let mock = """
+class TestClass: TestProtocol {
+    var invokedSetValueIntValue = false
+    var invokedSetValueIntValueCount = 0
+    var invokedSetValueIntValueParameters: (intValue: Int, Void)?
+    var invokedSetValueIntValueParametersList: [(intValue: Int, Void)] = []
+    func setValue(intValue: Int) {
+        invokedSetValueIntValue = true
+        invokedSetValueIntValueCount += 1
+        invokedSetValueIntValueParameters = (intValue, ())
+        invokedSetValueIntValueParametersList.append((intValue, ()))
+    }
+
+    var invokedSetValueStringValue = false
+    var invokedSetValueStringValueCount = 0
+    var invokedSetValueStringValueParameters: (stringValue: String, Void)?
+    var invokedSetValueStringValueParametersList: [(stringValue: String, Void)] = []
+    func setValue(stringValue: String) {
+        invokedSetValueStringValue = true
+        invokedSetValueStringValueCount += 1
+        invokedSetValueStringValueParameters = (stringValue, ())
+        invokedSetValueStringValueParametersList.append((stringValue, ()))
+    }
+
+    var invokedSetValueBoolValue = false
+    var invokedSetValueBoolValueCount = 0
+    var invokedSetValueBoolValueParameters: (boolValue: Bool, Void)?
+    var invokedSetValueBoolValueParametersList: [(boolValue: Bool, Void)] = []
+    func setValue(boolValue: Bool) {
+        invokedSetValueBoolValue = true
+        invokedSetValueBoolValueCount += 1
+        invokedSetValueBoolValueParameters = (boolValue, ())
+        invokedSetValueBoolValueParametersList.append((boolValue, ()))
+    }
+
+    var invokedSetValueBoolValueDefaultFalse = false
+    var invokedSetValueBoolValueDefaultFalseCount = 0
+    var invokedSetValueBoolValueDefaultFalseParameters: (boolValue: Bool, defaultFalse: Bool, Void)?
+    var invokedSetValueBoolValueDefaultFalseParametersList:
+        [(boolValue: Bool, defaultFalse: Bool, Void)] = []
+    func setValue(boolValue: Bool, defaultFalse: Bool) {
+        invokedSetValueBoolValueDefaultFalse = true
+        invokedSetValueBoolValueDefaultFalseCount += 1
+        invokedSetValueBoolValueDefaultFalseParameters = (boolValue, defaultFalse, ())
+        invokedSetValueBoolValueDefaultFalseParametersList.append((boolValue, defaultFalse, ()))
+    }
+
+}
+
+"""
+
+        XCTAssertEqual(try spyGenerator.generate(source: file), mock)
+    }
 }

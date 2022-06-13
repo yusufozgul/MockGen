@@ -55,7 +55,7 @@ public class SpyGenerator {
             }
 
             spyClasss
-                .addToNewLine("var \(variable.name): \(variable.typeAnnotation ?? "") {")
+                .addToNewLine("\(variable.modifiers.map(\.name).joined(separator: " ")) \(variable.keyword) \(variable.name): \(variable.typeAnnotation ?? "") {")
                 .addToNewLine("set {")
                 .addToNewLine("invoked\(variable.name.firstUppercased)Setter = true")
                 .addToNewLine("invoked\(variable.name.firstUppercased)SetterCount += 1")
@@ -73,16 +73,46 @@ public class SpyGenerator {
 
         // Function
         collector.functions.forEach { function in
+            let identifier: String
+
+            if collector.functions
+                .filter({ functionsItem in functionsItem != function })
+                .map(\.identifier)
+                .contains(function.identifier) { // Function overloaded
+                let overLoadedFunctions = collector.functions.filter { functionsItem in
+                    functionsItem.identifier == function.identifier && functionsItem != function
+                }
+                var functionIdentifier = function.identifier
+
+                for (index, parameter) in function.signature.input.enumerated() {
+                    functionIdentifier += (parameter.secondName ?? parameter.firstName ?? "").firstUppercased
+
+                    guard overLoadedFunctions
+                        .map(\.signature)
+                        .map(\.input)
+                        .map({ $0[safeIndex: index] })
+                        .compactMap { $0 }.contains(where: {( $0.secondName ?? $0.firstName ?? "") == parameter.secondName ?? parameter.firstName ?? "" })
+                    else { break }
+                }
+
+                identifier = functionIdentifier
+            } else { // Function not overloaded
+                identifier = function.identifier
+            }
+
             spyClasss
-                .addToNewLine("var invoked\(function.identifier.firstUppercased) = false")
-                .addToNewLine("var invoked\(function.identifier.firstUppercased)Count = 0")
+                .addToNewLine("var invoked\(identifier.firstUppercased) = false")
+                .addToNewLine("var invoked\(identifier.firstUppercased)Count = 0")
 
             // Function parameters
-            let parameters = function.signature.input.filter { !$0.isClosure }.map { "\($0.firstName ?? ""): \($0.type ?? "")"}.joined(separator: ", ")
+            let parameters = function.signature.input
+                .filter { !$0.isClosure }
+                .map { "\($0.secondName ?? $0.firstName ?? ""): \($0.type ?? "")"}
+                .joined(separator: ", ")
             if !parameters.isEmpty {
                 spyClasss
-                    .addToNewLine("var invoked\(function.identifier.firstUppercased)Parameters: (\(parameters), Void)?")
-                    .addToNewLine("var invoked\(function.identifier.firstUppercased)ParametersList: [(\(parameters), Void)] = []")
+                    .addToNewLine("var invoked\(identifier.firstUppercased)Parameters: (\(parameters), Void)?")
+                    .addToNewLine("var invoked\(identifier.firstUppercased)ParametersList: [(\(parameters), Void)] = []")
             }
 
             // Closures
@@ -91,27 +121,30 @@ public class SpyGenerator {
                 .forEach { closure in
                     if let closureInputType = closure.closureInputType {
                         spyClasss
-                            .addToNewLine("var stubbed\(function.identifier.firstUppercased)\(closure.firstName?.firstUppercased ?? "")Result: (\(closureInputType), Void)?")
+                            .addToNewLine("var stubbed\(identifier.firstUppercased)\(closure.firstName?.firstUppercased ?? "")Result: (\(closureInputType), Void)?")
                     }
                 }
 
             // Return
             if let output = function.signature.output {
                 spyClasss
-                    .addToNewLine("var stubbed\(function.identifier.firstUppercased)Result: \(output)!")
+                    .addToNewLine("var stubbed\(identifier.firstUppercased)Result: \(output)!")
             }
 
             spyClasss
                 .addToNewLine("func \(function.identifier)\(function.signature.description) {")
-                .addToNewLine("invoked\(function.identifier.firstUppercased) = true")
-                .addToNewLine("invoked\(function.identifier.firstUppercased)Count += 1")
+                .addToNewLine("invoked\(identifier.firstUppercased) = true")
+                .addToNewLine("invoked\(identifier.firstUppercased)Count += 1")
 
             // Function parameters
-            let parameterNames = function.signature.input.filter { !$0.isClosure }.map { "\($0.firstName ?? "")"}.joined(separator: ", ")
+            let parameterNames = function.signature.input
+                .filter { !$0.isClosure }
+                .map { "\($0.secondName ?? $0.firstName ?? "")"}
+                .joined(separator: ", ")
             if !parameterNames.isEmpty {
                 spyClasss
-                    .addToNewLine("invoked\(function.identifier.firstUppercased)Parameters = (\(parameterNames), ())")
-                    .addToNewLine("invoked\(function.identifier.firstUppercased)ParametersList.append((\(parameterNames), ()))")
+                    .addToNewLine("invoked\(identifier.firstUppercased)Parameters = (\(parameterNames), ())")
+                    .addToNewLine("invoked\(identifier.firstUppercased)ParametersList.append((\(parameterNames), ()))")
             }
 
             // Closures
@@ -119,7 +152,7 @@ public class SpyGenerator {
                 .filter { $0.isClosure }
                 .forEach { closure in
                     spyClasss
-                        .addToNewLine("if let result = stubbed\(function.identifier.firstUppercased)\(closure.firstName?.firstUppercased ?? "")Result {")
+                        .addToNewLine("if let result = stubbed\(identifier.firstUppercased)\(closure.firstName?.firstUppercased ?? "")Result {")
                         .addToNewLine("_ = \(closure.firstName ?? "")(result.0)")
                         .addToNewLine("}")
                 }
@@ -127,7 +160,7 @@ public class SpyGenerator {
             // Return
             if function.signature.output != nil {
                 spyClasss
-                    .addToNewLine("return stubbed\(function.identifier.firstUppercased)Result")
+                    .addToNewLine("return stubbed\(identifier.firstUppercased)Result")
             }
 
             spyClasss
