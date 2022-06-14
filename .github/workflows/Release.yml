@@ -32,17 +32,18 @@ jobs:
       - name: Archive
         run: |
           xcodebuild -project MockGen.xcodeproj -scheme MockGen -archivePath ./MockGen.xcarchive archive
-
-      - name: Package app
+          
+      - name: Export
         run: |
-          hdiutil create \
-                  -fs HFS+ \
-                  -srcfolder "build/root/$INSTALL_PATH/$FULL_PRODUCT_NAME" \
-                  -volname "$PRODUCT_NAME" "build/$PRODUCT_MODULE_NAME.dmg"
+          xcodebuild -exportArchive -archivePath ./MockGen.xcarchive -exportPath ./Release -exportOptionsPlist ExportOptions.plist
 
-      - name: Release app
+      - name: Package
+        run: |
+          zip -r MockGen.zip Release/MockGen.app
+
+      - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: build/${{ env.PRODUCT_MODULE_NAME }}.dmg
+          files: MockGen.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
