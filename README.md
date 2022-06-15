@@ -1,6 +1,7 @@
 # Swift Mock Generator Xcode Extension
 
 A simple Xcode extension for generate mock class.
+[![Unit Tests](https://github.com/yusufozgul/MockGen/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/yusufozgul/MockGen/actions/workflows/UnitTest.yml)
 
 <img width="256" alt="256@2x" src="https://user-images.githubusercontent.com/26109252/171494436-c8c7cb43-1c4a-40eb-8265-771333d68f06.png">
 
