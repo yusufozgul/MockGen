@@ -14,7 +14,18 @@ jobs:
 
     steps:
       - name: Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        
+      - name: Checkout certificates
+        uses: actions/checkout@v3
+        with:
+          repository: yusufozgul/MockGenKeychain
+          token: ${{ secrets.GH_PAT }}
+          path: certificates
+          
+      - name: Setup Keychain
+        run: |
+          security default-keychain -s ./certificates/MockGenKeychain.keychain
 
       - name: Archive
         run: |
