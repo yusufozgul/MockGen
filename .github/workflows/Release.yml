@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    tags: [ v* ]
+
+jobs:
+  release_version:
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
+        
+      - name: Checkout certificates
+        uses: actions/checkout@v3
+        with:
+          repository: yusufozgul/MockGenKeychain
+          token: ${{ secrets.GH_PAT }}
+          path: certificates
+          
+      - name: Setup Keychain
+        run: |
+          security default-keychain -s /Users/runner/work/MockGen/MockGen/certificates/MockGenKeychain.keychain
+          
+      - name: Unlock Keychain
+        run: |
+          security unlock-keychain -p ${{ secrets.KC_PASS }} /Users/runner/work/MockGen/MockGen/certificates/MockGenKeychain.keychain
+        
+      - name: Archive
+        run: |
+          xcodebuild -project MockGen.xcodeproj -scheme MockGen -archivePath ./MockGen.xcarchive archive
+          
+      - name: Export
+        run: |
+          xcodebuild -exportArchive -archivePath ./MockGen.xcarchive -exportPath ./Release -exportOptionsPlist ExportOptions.plist
+
+      - name: Package
+        run: |
+          zip -r MockGen.zip Release/MockGen.app
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: MockGen.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
