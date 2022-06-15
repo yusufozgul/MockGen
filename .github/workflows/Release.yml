@@ -28,7 +28,7 @@ jobs:
           
       - name: Unlock Keychain
         run: |
-          security unlock-keychain -p /Users/yusufozgul/actions-runner/_work/MockGen/MockGen/MockGenKeychain.keychain
+          security unlock-keychain -p  MockGenKeychain.keychain
         
       - name: Archive
         run: |
