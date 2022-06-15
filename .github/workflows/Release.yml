@@ -9,7 +9,8 @@ on:
 
 jobs:
   master_deploy:
-    runs-on: macos-latest
+    #runs-on: macos-latest
+    runs-on: self-hosted
     
     steps:
       - name: Checkout project
