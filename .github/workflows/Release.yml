@@ -24,7 +24,7 @@ jobs:
           
       - name: Setup Keychain
         run: |
-          security default-keychain -s ./certificates/MockGenKeychain.keychain
+          security default-keychain -s /Users/runner/work/MockGen/MockGen/certificates/MockGenKeychain.keychain
 
       - name: Archive
         run: |
