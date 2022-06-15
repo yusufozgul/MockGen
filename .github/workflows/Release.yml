@@ -25,11 +25,11 @@ jobs:
           
       - name: Setup Keychain
         run: |
-          security default-keychain -s /Users/runner/work/MockGen/MockGen/certificates/MockGenKeychain.keychain
+          security default-keychain -s /Users/yusufozgul/actions-runner/_work/MockGen/MockGen/certificates/MockGenKeychain.keychain
           
       - name: Unlock Keychain
         run: |
-          security unlock-keychain -p ${{ secrets.KC_PASS }} /Users/runner/work/MockGen/MockGen/certificates/MockGenKeychain.keychain
+          security unlock-keychain -p ${{ secrets.KC_PASS }} /Users/ryusufozgul/actions-runner/_work/MockGen/MockGen/certificates/MockGenKeychain.keychain
         
       - name: Archive
         run: |
