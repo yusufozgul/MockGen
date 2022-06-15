@@ -9,8 +9,7 @@ on:
 
 jobs:
   master_deploy:
-    #runs-on: macos-latest
-    runs-on: self-hosted
+    runs-on: macos-latest
     
     steps:
       - name: Checkout project
@@ -25,11 +24,11 @@ jobs:
           
       - name: Setup Keychain
         run: |
-          security default-keychain -s /Users/yusufozgul/actions-runner/_work/MockGen/MockGen/certificates/MockGenKeychain.keychain
+          security default-keychain -s /Users/runner/work/MockGen/MockGen/certificates/MockGenKeychain.keychain
           
       - name: Unlock Keychain
         run: |
-          security unlock-keychain -p ${{ secrets.KC_PASS }} /Users/yusufozgul/actions-runner/_work/MockGen/MockGen/certificates/MockGenKeychain.keychain
+          security unlock-keychain -p ${{ secrets.KC_PASS }} /Users/runner/work/MockGen/MockGen/certificates/MockGenKeychain.keychain
         
       - name: Archive
         run: |
