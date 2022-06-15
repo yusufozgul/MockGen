@@ -28,7 +28,7 @@ jobs:
           
       - name: Unlock Keychain
         run: |
-          security unlock-keychain -p  MockGenKeychain.keychain
+          security unlock-keychain -p ${{ secrets.KC_PASS }} /Users/runner/work/MockGen/MockGen/certificates/MockGenKeychain.keychain
         
       - name: Archive
         run: |
