@@ -25,7 +25,11 @@ jobs:
       - name: Setup Keychain
         run: |
           security default-keychain -s /Users/runner/work/MockGen/MockGen/certificates/MockGenKeychain.keychain
-
+          
+      - name: Unlock Keychain
+        run: |
+          security unlock-keychain -p /Users/yusufozgul/actions-runner/_work/MockGen/MockGen/MockGenKeychain.keychain
+        
       - name: Archive
         run: |
           xcodebuild -project MockGen.xcodeproj -scheme MockGen -archivePath ./MockGen.xcarchive archive
