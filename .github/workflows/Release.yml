@@ -26,13 +26,10 @@ jobs:
       - name: Unlock Keychain
         run: |
           security unlock-keychain -p ${{ secrets.KC_PASS }} /Users/runner/work/MockGen/MockGen/certificates/MockGenKeychain.keychain
-      - name: P
-        run: |
-          ${{secrets.KC_PASS}} | sed 's/./& /g'
         
       - name: Archive
         run: |
-          axcodebuild -project MockGen.xcodeproj -scheme MockGen -archivePath ./MockGen.xcarchive archive
+          xcodebuild -project MockGen.xcodeproj -scheme MockGen -archivePath ./MockGen.xcarchive archive
           
       - name: Export
         run: |
